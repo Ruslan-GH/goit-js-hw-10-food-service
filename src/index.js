@@ -16,6 +16,7 @@ const inputThemeSwitch = document.querySelector('#theme-switch-toggle')
 
 inputThemeSwitch.addEventListener('change', (e) => {
     if (e.target.checked) {
+        document.querySelector('body').classList.remove('light-theme')
         document.querySelector('body').classList.add('dark-theme')
         localStorage.setItem('theme', 'dark-theme')
     } else {
@@ -24,5 +25,9 @@ inputThemeSwitch.addEventListener('change', (e) => {
         localStorage.setItem('theme', 'light-theme')}
 })
 
-
+const savedTheme = localStorage.getItem('theme')
+if (savedTheme === 'dark-theme') {
+    inputThemeSwitch.checked = savedTheme;
+    document.querySelector('body').classList.add('dark-theme');
+} else(document.querySelector('body').classList.add('light-theme'))
 
